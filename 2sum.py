@@ -25,14 +25,7 @@ def two_sum(array):
     return out
         
 def main():
-#    tracker = 0
-    file = open('2sum.txt')
-#    graph = set([int(line) for line in file])
-#    for t in range(-10000, 10001):
-#        for num in graph:
-#            if t - num in graph:
-#                tracker += 1
-#    return tracker           
+    file = open('2sum.txt')           
     graph = make_graph(file)
     graph.sort()
     return len(two_sum(graph))
