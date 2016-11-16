@@ -1,7 +1,3 @@
-file = open('IntegerArray.txt', 'r')
-alist = []
-for i in file.readlines():
-    alist.append(int(i))
 inversions = 0
 
 def mergeSort(alist):
@@ -19,7 +15,10 @@ def mergeSort(alist):
         i=0
         j=0
         k=0
-        
+        # i is used to keep track of the number of elements added to the 
+        # sorted alist from leftlist while j keeps track of the elements add
+        # from rightlist on each iteration
+        # k keeps tracks the total number of elements added after each iteration
         while i < len(leftlist) and j < len(rightlist):
             if leftlist[i] < rightlist[j]:
                 alist[k] = leftlist[i]
@@ -41,9 +40,14 @@ def mergeSort(alist):
             k += 1
     
     return alist
+
+def main():
+    file = open('IntegerArray.txt')
+    alist = [int(line) for line in file]
+    return mergeSort(alist)
+
     
-#alist = [1,5,3,2,6,4]
-mergeSort(alist)
-print(alist)
-print(inversions)
+if __name__ == '__main__':
+    print(main())
+    print(inversions)
 
