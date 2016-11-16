@@ -2,13 +2,8 @@
 """
 Created on Mon Oct 10 13:46:30 2016
 
-@author: Jake
+@author: Mike
 """
-
-file = open('QuickSort.txt', 'r')
-alist = []
-for i in file.readlines():
-    alist.append(int(i))
     
 def QuickSort(alist):
     QuickSortHelp(alist, 0, len(alist)-1)
@@ -22,12 +17,15 @@ def QuickSortHelp(alist, first, last):
         splitpoint = Partition(alist, first, last)
         QuickSortHelp(alist, first, splitpoint-1)
         QuickSortHelp(alist, splitpoint+1, last)
-        
+
+# a, b and c are elements from the partitioned array; they refer to the first,
+# last and median indexs (in no particular order)
 def FindMedian(alist, a, b, c):
     return(alist[a] < alist[b] and alist[a] > alist[c]) or\
     (alist[a] > alist[b] and alist[a] < alist[c])
-        
-comp = 0    
+
+# keeps track of total number of comparisons       
+comp = 0   
 def Partition(alist, first, last):
 
     #First
@@ -39,6 +37,8 @@ def Partition(alist, first, last):
     #Median
     middle = (first + last) // 2
     
+    # discover median element and if not first element put it in the first
+    # position
     if FindMedian(alist, first, middle, last):
         pivot = alist[first]
     elif FindMedian(alist, middle, first, last):
@@ -47,8 +47,6 @@ def Partition(alist, first, last):
     else:
         pivot = alist[last]
         alist[last], alist[first] = alist[first], alist[last]
-        
-    print(pivot)
     
     pointer = first + 1
 
@@ -63,8 +61,11 @@ def Partition(alist, first, last):
 
     return pointer - 1
     
-     
-#alist = [6,4,8,7,3,5,2,9,1]
-QuickSort(alist)
-print(alist)
-print(comp)
+def main():
+    file = open('QuickSort.txt')
+    alist = [int(line) for line in file]
+    QuickSort(alist)
+
+if __name__ == '__main__':
+    main()
+    print(comp)
