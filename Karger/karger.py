@@ -20,7 +20,9 @@ class Adjacency(object):
         
     def __repr__(self):
         return 'Adjacency (vertex = %r, edge = %r)' % (self.vertex, self.edge)
-        
+
+# recursively combines vertecies at random until there are only 2 clusters
+# of vertices and edges        
 def cut(graph):
     if len(graph) == 2:
         return graph
@@ -32,7 +34,8 @@ def cut(graph):
         rand_vertex.contract(merge_pick[0])
         graph.remove(merge_pick[0])
         return cut(graph)
-    
+
+# runs cut graph many times until and counts the number of crossing edges   
 def min_cut(graph):
     trial_nu = int(math.pow(len(graph), 1) * math.log(len(graph)))
     min_cross = float('inf')

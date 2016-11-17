@@ -68,7 +68,7 @@ def dfs(graph, node, tracker):
     tracker.finish_time[node] = tracker.current_time
         
 def main():
-    file = open('SCC1.txt')
+    file = open('SCC.txt')
     graph, reverse_graph = make_graph(file)
     groups = SCC(graph, reverse_graph)
     top_5 = sorted(groups, key=len, reverse=True)
