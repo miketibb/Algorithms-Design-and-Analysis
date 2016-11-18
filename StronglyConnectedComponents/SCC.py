@@ -2,14 +2,14 @@
 """
 Created on Mon Oct 24 20:51:24 2016
 
-@author: Jake
+@author: Mike
 """
 from collections import defaultdict
 import sys
-#import resource
+import resource
 
 sys.setrecursionlimit(10 ** 6)
-#resource.setrlimit(resource.RLIMIT_STACK, (2 ** 29, 2 ** 30))
+resource.setrlimit(resource.RLIMIT_STACK, (2 ** 29, 2 ** 30))
 
 
 class Tracker(object):
